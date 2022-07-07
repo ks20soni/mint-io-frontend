@@ -1,0 +1,32 @@
+.mintBox {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #363062;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 700px;
+}
+
+.mintBox:hover{
+    border: 1px solid rgb(175, 175, 175);
+
+}
+
+.mintBox__info{
+    display: flex;
+    align-items: center;
+}
+
+.mintBox__info > h5 {
+    color: #363062;
+    margin-left: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.mintBox__mint{
+    display: flex;
+    margin-top: 8px;
+}

@@ -1,0 +1,6 @@
+.SideBar {
+ /* margin-top: 10px; */
+  flex: 20%;
+  background-color: rgba(233, 213, 202,45%);
+  margin-right: 20px;
+}
