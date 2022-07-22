@@ -15,17 +15,23 @@ import SignIn from "./Components/SignInUp/SignIn";
 
 import { ConfigureStore } from "./Redux/ConfigureStore";
 import { Route } from 'react-router-dom/cjs/react-router-dom.min';
+import TimeAgo from 'javascript-time-ago'
+import store from './app/store';
 
-const store = ConfigureStore();
+import en from 'javascript-time-ago/locale/en.json'
+import ru from 'javascript-time-ago/locale/ru.json'
+
+TimeAgo.addDefaultLocale(en)
+TimeAgo.addLocale(en)
+
+// const store = ConfigureStore();
 
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <ThemeProvider theme={globalMUITheme}> */}
       <Provider store={store}>
-        <Router>
           <App />
-        </Router>
       </Provider>
     {/* </ThemeProvider> */}
   </React.StrictMode>,

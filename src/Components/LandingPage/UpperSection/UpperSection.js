@@ -17,6 +17,14 @@ function UpperSection() {
         history.push("/signup");
     };
 
+    const handleSubmit = async() => {
+        await signInWithPopup(auth, provider).then((result) => {
+            console.log(result);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
     return(
         <div className={styles.Wrapper}>
         <div className= {styles.LogoWrapper}>
@@ -29,16 +37,16 @@ function UpperSection() {
                     One platform for all your doubts and queries!
                 </div>
                 <div className= {styles.Buttons}>
-                    <Button
+                    {/* <Button
                     wrapperClass = {styles.ButtonStyle1}
                     content = "Sign Up"
                     onClick = {goToSignUp}
-                    />
+                    /> */}
                     <Button
                     wrapperClass = {styles.ButtonStyle2}
                     content = "Sign In"
                     
-                    onClick={goToSignIn}
+                    onClick={handleSubmit}
                     />
                 </div>
             </div>

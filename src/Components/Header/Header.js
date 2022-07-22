@@ -15,6 +15,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import 'react-responsive-modal/styles.css';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { Input } from '@material-ui/core';
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { logout, selectUser } from '../../feature/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function Header() {
@@ -22,12 +27,54 @@ function Header() {
     const [isModalOpen,setIsModalOpen] = useState(false);
     const [inputUrl, setInputUrl] = useState('');
     const Close = <CloseIcon/>;
+    const [question,setQuestion] = useState("");
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser);
+
+    const handleSubmit = async () => {
+        if(question !== "") {
+
+            const config = {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            };
+            const body = {
+                questionName: question,
+                questionUrl: inputUrl,
+                user: user
+            }
+            await axios.post("/api/questions",body,config).then((res) => {
+                console.log(res.data);
+                alert(res.data.message)
+                window.location.href = "/";
+            }).catch((e) => {
+                console.log(e)
+                alert("Error in adding question!")
+            });
+        }
+    }
+
+    const handleLogout = () => {
+        if(window.confirm("Are you sure to logout?")){
+            signOut(auth).then(() => {
+                dispatch(logout())
+                console.log('logged out')
+            }).catch(() => {
+                console.log("error in logout");
+            })
+        }
+    }
 
     return (
         <div className='mHeader'>
             <div className='mHeader-content'>
                 <div className='mHeader__logo'>
-                    <Logo/>
+                    {/* <Logo/> */}
+                    <img
+            src="https://video-public.canva.com/VAD8lt3jPyI/v/ec7205f25c.gif"
+            alt="logo"
+          />
                         </div>
                     <div className='mHeader__icons'>
                         <div className='mHeader__icon'><HomeIcon /></div>
@@ -41,7 +88,7 @@ function Header() {
                         <input type="text" placeholder='Search Questions' />
                     </div>
                     <div className='mHeader__Rem'>
-                        <Avatar />
+                        <span onClick={handleLogout}><Avatar  src={user?.photo}/></span>
                     </div>
                     <Button className='mHeader__addQues'
                     onClick={() => setIsModalOpen(true)}>Add Question</Button>
@@ -63,7 +110,7 @@ function Header() {
                             <h5>Share Link</h5>
                         </div>
                         <div className='modal__info'>
-                            <Avatar className='avatar'/>
+                            <Avatar src={user?.photo} className='avatar'/>
                             <div className='modal__scope'>
                                 <PeopleAltOutlinedIcon/>
                                 <p>Public</p>
@@ -71,7 +118,12 @@ function Header() {
                             </div>
                         </div>
                         <div className='modal__field'>
-                            <Input type="text" placeholder="Start your question with 'what', 'how', 'why', etc."/>
+                            <Input
+                            value = {question}
+                             onChange={(e) => setQuestion(e.target.value)}
+                            type="text" placeholder="Start your question with 'what', 'how', 'why', etc."
+                                
+                            />
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column"
@@ -100,9 +152,11 @@ function Header() {
                             <button className='cancel' onClick={() => setIsModalOpen(false)}>
                                 Cancel
                             </button>
-                            <button className='add'
+                            <button
+                            onClick={handleSubmit} 
+                            className='add'
                             type='submit' 
-                            onClick={() => setIsModalOpen(false)}>
+                            >
                                 Add Question
                             </button>
                         </div>

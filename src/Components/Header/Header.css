@@ -19,19 +19,21 @@
     flex-direction: row;
   }
   
-  .mHeader__logo {
+  .mHeader__logo > img {
     /* height: 5rem !important; */
-    object-fit: contain;
-    padding: 5px;
+    /* object-fit: contain;
+    padding: 5px; */
+    height: 30px !important;
+  object-fit: contain;
   }
 
-  .mHeader__logo > .MuiSvgIcon-root {
+  /* .mHeader__logo > .MuiSvgIcon-root {
     color: #E9D5CA;
     font-size: xx-large;
     margin-right: 40px;
     padding: 5px;
   }
-  
+   */
   .mHeader__icons {
     display: flex;
   }
