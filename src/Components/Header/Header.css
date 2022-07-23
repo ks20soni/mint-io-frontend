@@ -18,6 +18,26 @@
     /* padding: 5px; */
     flex-direction: row;
   }
+
+  .mHeader__logo{
+    margin-top: 45px;
+    margin-left: 0;
+  }
+
+  .mHeader__logo > .logo__svg {
+    /* width: fit-content !important; */
+    /* display: flex;
+    justify-content: center; */
+    object-fit: contain;
+    height: 30px !important;
+    margin-top: 0;
+    /* border: 2px solid red; */
+    padding: 5px;
+    width: fit-content;
+    transform: scale(10);
+    margin-left: 0;
+    margin-right: 10rem;
+  }
   
   .mHeader__logo > img {
     /* height: 5rem !important; */
@@ -25,6 +45,7 @@
     padding: 5px; */
     height: 30px !important;
   object-fit: contain;
+  width: fit-content;
   }
 
   /* .mHeader__logo > .MuiSvgIcon-root {
@@ -133,6 +154,10 @@
 
  .mHeader__addQues > .MuiButton-root{
     color: #fff ;
+  }
+
+  .mHeader__addQues > .MuiButton-root:hover{
+    background: #827397;
   }
   
   .modal__title {

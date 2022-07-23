@@ -10,8 +10,6 @@ function Widget() {
         </div>
         <div className='widget__contents'>
             <WidgetContent />
-            <WidgetContent/>
-            <WidgetContent/>
         </div>
     </div>
   )

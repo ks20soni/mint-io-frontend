@@ -86,7 +86,7 @@ function Post({ post }) {
                     <p>
                         {post?.questionName}
                     </p>
-                    <button className='post_btnAnswer' onClick={() => setIsModalOpen(true)}>Answer</button>
+                    <button className='post__btnAnswer' onClick={() => setIsModalOpen(true)}>Answer</button>
                     <Modal
                         open={isModalOpen}
                         closeIcon={Close}

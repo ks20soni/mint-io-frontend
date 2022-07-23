@@ -20,6 +20,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { logout, selectUser } from '../../feature/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import {ReactComponent as LogoMint} from "../../Assets/mint.svg";
 
 
 function Header() {
@@ -70,11 +71,11 @@ function Header() {
         <div className='mHeader'>
             <div className='mHeader-content'>
                 <div className='mHeader__logo'>
-                    {/* <Logo/> */}
-                    <img
+                    <LogoMint fill="white" className="logo__svg"/>
+                    {/* <img
             src="https://video-public.canva.com/VAD8lt3jPyI/v/ec7205f25c.gif"
             alt="logo"
-          />
+          /> */}
                         </div>
                     <div className='mHeader__icons'>
                         <div className='mHeader__icon'><HomeIcon /></div>
@@ -91,7 +92,10 @@ function Header() {
                         <span onClick={handleLogout}><Avatar  src={user?.photo}/></span>
                     </div>
                     <Button className='mHeader__addQues'
-                    onClick={() => setIsModalOpen(true)}>Add Question</Button>
+                    onClick={() => setIsModalOpen(true)} style= {{
+                        color: "white",
+                        marginLeft: "15px"
+                    }}>Add Question</Button>
                     <Modal
                     open = {isModalOpen}
                     closeIcon = {Close}

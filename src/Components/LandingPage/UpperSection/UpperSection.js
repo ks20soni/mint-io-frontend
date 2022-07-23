@@ -5,6 +5,8 @@ import Button from "../../Button/Button";
 import styles from "./UpperSection.module.css";
 import {ReactComponent as Mint} from "../../../Assets/mnt1.svg";
 import {ReactComponent as Logo} from "../../../Assets/mint.svg";
+import {signInWithPopup} from "firebase/auth";
+import { auth, provider } from "../../../firebase";
 
 function UpperSection() {
     let history = useHistory();
